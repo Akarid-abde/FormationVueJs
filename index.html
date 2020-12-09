@@ -3,12 +3,40 @@
 <head>
 	<title>Vue js-Formation </title>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
 <div id="app-vue">
-	<h1>{{ nom }}</h1>
+	<div class="container">
+		<div class="row mt-4">
+			<div class="col-md-8 max-auto">
+				<div class="card border-primary">
+					<div class="card-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nom</th>
+									<th>Tele</th>
+								</tr>
+							</thead>
+							<tbody v-for="(contact,index) in contacts">
+								<tr key="index">
+								<td>{{contact.id}}</td>
+								<td>{{contact.nom}}</td>
+								<td>{{contact.tele}}</td>
+							    </tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script src="app.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
