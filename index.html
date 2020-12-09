@@ -32,7 +32,11 @@
 								<td>{{contact.nom}}</td>
 								<td>{{contact.tele}}</td>
 								<td>  
-                                <a href="" class="btn btn-sm btn-warning">Update</a>
+                                <a 
+                                data-bs-toggle="modal" 
+				                data-bs-target="#updateContact"
+				                @click="getIdContact(contact.id)"
+                                 class="btn btn-sm btn-warning">Update</a>
                                 <a 
                                 @click="DeleteContact(contact.id)"
                                 href="" class="btn btn-sm btn-danger">Delete</a>
@@ -61,6 +65,27 @@
         	<input type="text" name="tele" v-model="contact.tele" class="form-control" 
         	placeholder="tele">
            <button @click="addcontact()" type="button" class="btn btn-primary">Valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="updateContact" class="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+        	<input type="text" name="nom" v-model="contact.nom" class="form-control" 
+        	placeholder="Nom">
+        	<input type="text" name="tele" v-model="contact.tele" class="form-control" 
+        	placeholder="tele">
+           <button @click="Updatecontact()" type="button" class="btn btn-primary">Valider</button>
         </div>
       </div>
     </div>
