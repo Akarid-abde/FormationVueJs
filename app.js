@@ -15,7 +15,13 @@ new Vue({
         .catch(err => console.log(err))
     },
     addcontact(){
-     alert('add');
+     //alert('add');
+     axios.post('http://localhost/Formation_VueJs/addcontact.php',{
+       nom : this.contact.nom,
+       tele : this.contact.tele
+     })
+     .then(response  => this.contacts.push(response.data))
+     .catch(err => console.log(err))
     },
     DeleteContact(id){
       axios.delete('http://localhost/Formation_VueJs/DeleteContact.php?id='+id)
