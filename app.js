@@ -65,7 +65,7 @@ new Vue({
   confirmButtonText: 'OUI!',
   concelButtonText : 'Annuler'
      }).then((result) => {
- if (result.value) {
+  if (result.isConfirmed) {
       axios.delete('http://localhost/Formation_VueJs/DeleteContact.php?id='+id)
       .then(response => {
         this.contacts = this.contacts.filter(contact => {
@@ -78,6 +78,7 @@ new Vue({
       )
         })
         .catch(err => console.log(err));
+
   }
   })
     },
