@@ -25,6 +25,12 @@ new Vue({
       this.contacts.push(response.data);
       this.contact = {nom : '', tele : ''};
       $('#addContact').modal('hide');
+      Swal.fire({
+       icon: 'success',
+       title: 'Ajouter Bien Fait',
+       text: 'Contact Ajouter Avec Success!',
+       footer: ''
+      })
     })
      .catch(err => console.log(err))
     }, 
@@ -38,18 +44,43 @@ new Vue({
       this.contact = {nom : '', tele : ''};
       $('#updateContact').modal('hide');
       this.getContacts();
+          Swal.fire({
+       icon: 'success',
+       title: 'Modifier Bien Fait',
+       text: 'Contact Modifier Avec Success!',
+       footer: ''
+      })
     })
      .catch(err => console.log(err))
    },
 
     DeleteContact(id){
+Swal.fire({
+  title: 'Etre Vous Sur?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'OUI!',
+  concelButtonText : 'Annuler'
+     }).then((result) => {
+  if (result.isConfirmed) {
+
       axios.delete('http://localhost/Formation_VueJs/DeleteContact.php?id='+id)
       .then(response => {
         this.contacts = this.contacts.filter(contact => {
                    return contact.id !== id
         });
+         Swal.fire(
+      'Supprimer Bien Fait !',
+      'Contact Supprimer.',
+      'success'
+    )
       })
       .catch(err => console.log(err))
+  }
+  })
     },
     getIdContact(id){
       axios.get('http://localhost/Formation_VueJs/get_ContactId.php?id='+id)
