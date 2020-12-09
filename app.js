@@ -20,7 +20,11 @@ new Vue({
        nom : this.contact.nom,
        tele : this.contact.tele
      })
-     .then(response  => this.contacts.push(response.data))
+     .then(response  => {
+      this.contacts.push(response.data);
+      this.contact = {nom : '', tele : ''};
+      $('#addContact').modal('hide');
+    })
      .catch(err => console.log(err))
     },
     DeleteContact(id){

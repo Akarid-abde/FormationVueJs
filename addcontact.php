@@ -11,7 +11,7 @@ if(mysqli_query($con,$query))
 	$contact = [
 		"nom" => $requist->nom,
 		"tele" => $requist->tele,
-		"id" =>  mysql_insert_id()
+		"id" =>  mysqli_insert_id($con)
 	];
 echo json_encode($contact);
 }
